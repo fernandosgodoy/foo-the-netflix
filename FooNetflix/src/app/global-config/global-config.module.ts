@@ -18,4 +18,8 @@ export class GlobalConfigModule {
       messagingSenderId: ""
     }
 
+    public static apiMovieDb: {
+      url: "https://api.themoviedb.org/3/"
+    }
+
  }
