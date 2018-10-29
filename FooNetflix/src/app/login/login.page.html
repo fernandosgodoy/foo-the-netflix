@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-row>
+      <ion-col-3>
+        <label>E-mail</label>
+      </ion-col-3>
+      <ion-col-9>
+        <input type="text" ng-model="login.email" />
+      </ion-col-9>
+    </ion-row>
+    <ion-row>
+      <ion-col-3>
+        <label>Senha</label>
+      </ion-col-3>
+      <ion-col-9>
+        <input type="password" ng-model="login.senha" />
+      </ion-col-9>
+    </ion-row>
+    <button ion-button>Entrar</button>
+  </ion-card>
+
+</ion-content>
