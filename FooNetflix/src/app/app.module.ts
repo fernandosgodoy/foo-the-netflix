@@ -16,6 +16,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../app/login/login.page';
 import { ConfigService } from './config.service';
 
+// Services/Providers
+import { FilmesService } from './filmes.service';
+import { HttpModule } from '@angular/http';
+import { AuthMovieService } from './auth-movie.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,11 +33,14 @@ import { ConfigService } from './config.service';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    HttpModule,
     AngularFireModule.initializeApp(ConfigService.fireBase)
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    FilmesService,
+    AuthMovieService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
