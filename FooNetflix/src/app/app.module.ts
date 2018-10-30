@@ -19,7 +19,6 @@ import { ConfigService } from './config.service';
 // Services/Providers
 import { FilmesService } from './filmes.service';
 import { HttpModule } from '@angular/http';
-import { AuthMovieService } from './auth-movie.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { AuthMovieService } from './auth-movie.service';
     StatusBar,
     SplashScreen,
     FilmesService,
-    AuthMovieService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

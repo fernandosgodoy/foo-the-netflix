@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FilmesService } from '../filmes.service';
-import { AuthMovieService } from '../auth-movie.service';
-import { ConfigService } from '../config.service';
+import { NavController } from '@ionic/angular';
+import { DetalhePage } from '../detalhe/detalhe.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,18 +14,22 @@ export class HomePage {
   public filmes: any;
 
   constructor(public filmesService: FilmesService,
-    public authService: AuthMovieService,
-    private configService: ConfigService){
+    private router: Router){
     try {
-      var authToken = this.authService.Authorize(this.configService.getAuthKey());
-      console.log(authToken);
-      if (authToken != undefined) {
-      this.filmesService.getLatest()
-        .subscribe(res => this.filmes = res.json());
-      }
+      this.filmesService.upcoming()
+        .subscribe(res => {
+          this.filmes = res.json().results;
+          console.log(this.filmes);
+        });
+      
     } catch (e) {
       console.error(e);
     }
   }
 
+  public detalhar(idMovie) {
+      this.router.navigate(['/Detalhe'], idMovie);
+  }
+
 }
+

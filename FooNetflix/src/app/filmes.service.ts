@@ -18,16 +18,18 @@ export class FilmesService {
   }
 
    public getLatest(){
-    var token = '';
+    var api_key = this.configService.getAuthKey();
+    return this.http.get(this.apiuri + 'latest' + '?api_key=' + api_key);
+   }
 
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    headers.append('Accept', 'application/json');
-    headers.append('Authorization', 'Bearer ' + token);
+   public upcoming() {
+    var api_key = this.configService.getAuthKey();
+    return this.http.get(this.apiuri + 'upcoming' + '?api_key=' + api_key);
+   }
 
-    // let options = new RequestOptions({ headers: headers });
-
-    return this.http.get(this.apiuri + 'latest');
+   public detail(idMovie) {
+    var api_key = this.configService.getAuthKey();
+    return this.http.get(this.apiuri + idMovie + '?api_key=' + api_key);
    }
 
 }

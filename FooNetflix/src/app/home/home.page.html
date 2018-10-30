@@ -1,20 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Foo The Netflix</ion-title>
+    <ion-title>Foo - The Netflix</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   
-  <ion-card>
-    <img src="img/nin-live.png"/>
+  <ion-card *ngFor="let filme of filmes" (click)="detalhar(filme.id)">
+    <img src="http://image.tmdb.org/t/p/original/{{filme.poster_path}}"
+      width="200" />
     <ion-card-content>
-      <ion-card-title>
-        Nine Inch Nails Live
+        <ion-card-title>
+          {{filme.title}}
         </ion-card-title>
       <p>
-        The most popular industrial group ever, and largely
-        responsible for bringing the music to a mass audience.
+        {{filme.overview}}
       </p>
     </ion-card-content>
   </ion-card>
