@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, Config } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -11,10 +11,10 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { GlobalConfigModule } from '../app/global-config/global-config.module';
 
 // Paginas
 import { LoginPage } from '../app/login/login.page';
+import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { LoginPage } from '../app/login/login.page';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    AngularFireModule.initializeApp(GlobalConfigModule.fireBase)
+    AngularFireModule.initializeApp(ConfigService.fireBase)
   ],
   providers: [
     StatusBar,

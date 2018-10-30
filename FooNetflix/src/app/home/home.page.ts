@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { FilmesService } from '../filmes.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +10,17 @@ export class HomePage {
 
   public filmes: any;
 
-  constructor(private http: Http){
-    this.carregarFilmes();
+  constructor(private filmesService: FilmesService){
+    this.iniciarDadosTela(filmesService);
   }
 
-  private carregarFilmes(){
-    this.http.get('',
-      null);
+  private iniciarDadosTela(filmesService: FilmesService) {
+    try {
+      filmesService.getLatest()
+        .subscribe(res => this.filmes = res.json());
+    } catch (e) {
+      console.error(e);
+    }
   }
-
+  
 }
