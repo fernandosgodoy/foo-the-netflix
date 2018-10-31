@@ -28,7 +28,8 @@ export class HomePage {
   }
 
   public detalhar(idMovie) {
-      this.router.navigate(['/Detalhe'], idMovie);
+      console.log('Id do filme: ' + idMovie);
+      this.router.navigate(['/Detalhe', { idMovie: idMovie }]);
   }
 
 }

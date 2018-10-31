@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmesService } from '../filmes.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalhe',
@@ -8,21 +9,27 @@ import { FilmesService } from '../filmes.service';
 })
 export class DetalhePage implements OnInit {
 
-  private idMovie :  number;
+  private idMovie :  any;
   public movie : any;
 
-  constructor(private filmeService: FilmesService) {
-    console.log('Id Movie Enviado');
-    console.log(this.idMovie);
-
-    this.filmeService.detail(this.idMovie)
-        .subscribe(res => {
-          this.movie = res.json();
-          console.log(res.json());
-        });
+  constructor(private filmeService: FilmesService,
+    private router: ActivatedRoute) {
+    
    }
 
   ngOnInit() {
+    this.idMovie = this.router.snapshot.paramMap.get('id');
+    this.loadMovieDetail();
+  }
+
+  loadMovieDetail() {
+    if (this.idMovie != undefined) {
+      this.filmeService.detail(this.idMovie)
+      .subscribe(res => {
+        this.movie = res.json();
+        console.log(res.json());
+      });
+    }
   }
 
 }

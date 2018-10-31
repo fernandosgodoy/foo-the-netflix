@@ -1,10 +1,46 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Detalhe do Filme</ion-title>
+    <ion-title>Detalhes do Filme</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+
+  <ion-item>
+    <ion-card>
+      <img src="http://image.tmdb.org/t/p/original/{{movie.poster_path}}"
+      width="200" />
+      <ion-card-content>
+          <ion-card-title>
+            {{movie.title}}
+          </ion-card-title>
+        <p>
+          {{movie.overview}}
+        </p>
+        <br/>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <span>Budget:</span> $ {{movie.budget}}
+            </ion-col>
+            <ion-col>
+              <span>Vote Average: </span> {{movie.vote_average}}
+            </ion-col>
+            <ion-col>
+              <span>Vote Count: </span> {{movie.vote_count}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      
+    </ion-card>
+
+    
+
+  </ion-item>
 
   
 
