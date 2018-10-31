@@ -1,26 +1,46 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Foo - The Netflix</ion-title>
+    <ion-card>Olá <span>Fulano</span></ion-card>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  
-  <ion-item *ngFor="let filme of filmes" 
+
+  <h2>últimos lançamentos</h2>
+  <ion-item *ngFor="let filme of filmes | slice:0:6; let i=index" 
+     class="item-movie">
+
+    <div class="movie-dest">
+      <a [href]="'Detalhe/' + filme.id" 
+        routerDirection="foward">
+          <img src="http://image.tmdb.org/t/p/w154/{{filme.poster_path}}"
+            width="120" height="120" />
+      </a>
+      
+      <button (click)="favorite(filme.id)" ion-button><ion-icon name="bookmark"></ion-icon></button>
+      <div class="detail">
+        <div class="title">{{filme.title}}</div>
+      </div>
+    </div>
+  </ion-item>
+
+  <br style="clear: both;">
+
+  <h2>em alta</h2>
+  <ion-item *ngFor="let filme of maisPopulares | slice:0:6; let i=index" 
     [href]="'Detalhe/' + filme.id" 
-    routerDirection="foward">
-    <ion-card>
-      <img src="http://image.tmdb.org/t/p/original/{{filme.poster_path}}"
-      width="200" />
-      <ion-card-content>
-          <ion-card-title>
-            {{filme.title}}
-          </ion-card-title>
-        <p>
-          {{filme.overview}}
-        </p>
-      </ion-card-content>
-    </ion-card>
+    routerDirection="foward" class="item-movie">
+
+    <div class="movie-dest">
+      <img src="http://image.tmdb.org/t/p/w154/{{filme.poster_path}}"
+          width="120" height="120" />
+      <div class="detail">
+        <div class="title">{{filme.title}}</div>
+      </div>
+      <button (click)="favorite(filme.id)" ion-button><ion-icon name="bookmark"></ion-icon></button>
+    </div>
+
   </ion-item>
 
 </ion-content>

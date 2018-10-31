@@ -22,6 +22,11 @@ export class FilmesService {
     return this.http.get(this.apiuri + 'latest' + '?api_key=' + api_key);
    }
 
+   public getPopular() {
+    var api_key = this.configService.getAuthKey();
+    return this.http.get(this.apiuri + 'popular' + '?api_key=' + api_key);
+   }
+
    public upcoming() {
     var api_key = this.configService.getAuthKey();
     return this.http.get(this.apiuri + 'upcoming' + '?api_key=' + api_key);

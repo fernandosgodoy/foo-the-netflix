@@ -6,24 +6,26 @@
 
 <ion-content padding>
 
-  <ion-card>
-    <ion-row>
-      <ion-col>
-        <label>E-mail</label>
-      </ion-col>
-      <ion-col>
-        <input type="text" ng-model="login.email" />
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <label>Senha</label>
-      </ion-col>
-      <ion-col>
-        <input type="password" ng-model="login.senha" />
-      </ion-col>
-    </ion-row>
-    <button ion-button>Entrar</button>
-  </ion-card>
+  <form (ngSubmit)="login()">
+    <ion-card>
+      <ion-row>
+        <ion-col>
+          <label>E-mail</label>
+        </ion-col>
+        <ion-col>
+          <input type="text" ng-model="login.email" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label>Senha</label>
+        </ion-col>
+        <ion-col>
+          <input type="password" ng-model="login.senha" />
+        </ion-col>
+      </ion-row>
+      <button ion-button>Entrar</button>
+    </ion-card>
+  </form>
 
 </ion-content>

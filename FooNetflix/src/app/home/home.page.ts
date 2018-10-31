@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   public filmes: any;
+  public maisPopulares: any;
 
   constructor(public filmesService: FilmesService,
     private router: Router){
@@ -19,7 +20,7 @@ export class HomePage {
       this.filmesService.upcoming()
         .subscribe(res => {
           this.filmes = res.json().results;
-          console.log(this.filmes);
+          this.carregarMaisPopulares();
         });
       
     } catch (e) {
@@ -27,9 +28,19 @@ export class HomePage {
     }
   }
 
+  private carregarMaisPopulares() {
+    this.filmesService.getPopular()
+      .subscribe(res => {
+        this.maisPopulares = res.json().results;
+      });
+  }
+
   public detalhar(idMovie) {
-      console.log('Id do filme: ' + idMovie);
       this.router.navigate(['/Detalhe', { idMovie: idMovie }]);
+  }
+
+  public favorite(idMovie) {
+    
   }
 
 }

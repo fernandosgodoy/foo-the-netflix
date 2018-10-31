@@ -1,1 +1,14 @@
 
+.item-movie {
+    // border: 2px solid #acacac;
+    float: left;
+    padding: 5px;
+    width: 120px;
+}
+
+.item-movie .movie-dest .detail .title {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 15px;
+    text-align: center;
+}
