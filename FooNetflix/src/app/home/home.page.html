@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Foo - The Netflix</ion-title>
-    <ion-card>Olá <span>Fulano</span></ion-card>
+    <ion-card *ngIf="isLogged">Olá <span>Fulano</span></ion-card>
   </ion-toolbar>
 </ion-header>
 
@@ -41,6 +41,10 @@
       <button (click)="favorite(filme.id)" ion-button><ion-icon name="bookmark"></ion-icon></button>
     </div>
 
+  </ion-item>
+
+  <ion-item *ngIf="!isLogged"> 
+    Fazer <a [href]="login">Login</a>?
   </ion-item>
 
 </ion-content>

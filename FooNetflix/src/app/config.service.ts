@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ConfigService {
 
   private movieDbUri: string = "https://api.themoviedb.org/3/";
-  private authKeyMovieDb: string = "39697cbb7520096c05291d274e1dac65";
+  private authKeyMovieDb: string = "";
 
   public static fireBase: {
     apiKey: "",

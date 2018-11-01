@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FilmesService } from '../filmes.service';
-import { NavController } from '@ionic/angular';
-import { DetalhePage } from '../detalhe/detalhe.page';
+import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,9 +12,13 @@ export class HomePage {
 
   public filmes: any;
   public maisPopulares: any;
+  public isLogged: boolean = false;
+
+  private MSG_FAZER_LOGIN : string = 'Você precisa estar logado para visualizar os favoritos.';
 
   constructor(public filmesService: FilmesService,
-    private router: Router){
+    private router: Router,
+    public alertCtrl: AlertController){
     try {
       this.filmesService.upcoming()
         .subscribe(res => {
@@ -40,7 +43,25 @@ export class HomePage {
   }
 
   public favorite(idMovie) {
+    if (!this.verificarLogado()) 
+      this.presentAlert('Atenção', 
+        this.MSG_FAZER_LOGIN);
     
+  }
+
+  public verificarLogado() : boolean {
+    this.isLogged = false;
+    return this.isLogged;
+  }
+
+  private presentAlert(pTitle, pMessage) {
+    let alert = this.alertCtrl.create({
+      // title: pTitle,
+      message: pMessage,
+      buttons: ['ok']
+    });
+    this.alertCtrl.getTop();
+    // this.alertCtrl.present();
   }
 
 }
